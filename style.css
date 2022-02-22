@@ -1,0 +1,28 @@
+body {
+    background-color: rgba(40, 40, 114, 0.959);
+}
+
+
+
+
+
+progress::-moz-progress-bar {
+  background: lightcolor;
+}
+
+progress::-webkit-progress-value {
+  background: red;
+}
+
+progress::-webkit-progress-bar {
+  background: blue;
+}
+#player-health {
+background: red;
+}
+
+
+#player-mana {
+  background-color: blue;
+  
+}
