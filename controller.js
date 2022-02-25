@@ -15,7 +15,7 @@ function playerAttack() {
         return;
     }
     let playerHitChance = Math.floor(Math.random() * model.player[chosenPlayer].accuracy + 5) //playerHitChance blir regnet ut ifra ett tilfeldig rull av spilleren sin accuracy stat + 5 base accuracy.
-    if (playerHitChance => 50 && playerHitChance <= 70) { //om player ruller høyere enn 50 på hitchance så gjør vi damage på bossen.
+    if (playerHitChance => 50 || playerHitChance <= 70) { //om player ruller høyere enn 50 på hitchance så gjør vi damage på bossen.
         model.boss[chosenBoss].health -= model.player[chosenPlayer].damage
         
     } else if (playerHitChance > 70) { //hvis hit chancen er over 70 så er det en critical hit og vi ganger damagen ut ifra crit multiplieren
@@ -23,8 +23,6 @@ function playerAttack() {
         console.log('CRIT HIT');
     }
     console.log('player hit roll: ', playerHitChance);
-
-
     bossAttack(); //Etter vi er ferdig med å regne ut vår damage så kaller vi på bossen sin utregning.
 }
 
@@ -33,7 +31,7 @@ function playerHeal() {
         return;
     }
     if (model.player[chosenPlayer].mana > 0) { //hvis player sin mana er over 0 så kjører funksjonen
-        let healAmount = Math.floor(Math.random() * 100); // den setter ett tilfeldig tall også legger til det tallet på healthen din
+        let healAmount = Math.floor(Math.random() * 1000); // den setter ett tilfeldig tall også legger til det tallet på healthen din
         model.player[chosenPlayer].health += healAmount;
         model.player[chosenPlayer].mana -= 10;
         console.log('Healed for :', healAmount);
@@ -44,9 +42,9 @@ function playerHeal() {
 function bossAttack() {
     //mye av det samme gjelder for boss angrepet
         let bossHitChance = Math.floor(Math.random() * model.boss[chosenBoss].accuracy + 5)
-        if (bossHitChance => 50 && bossHitChance <=70) {
+        if (bossHitChance => 50 || bossHitChance < 70) {
             model.player[chosenPlayer].health -= model.boss[chosenBoss].damage
-            model.bossHitInfo = `You were hit for ${model.boss[chosenBoss].damage}`;
+            //model.bossHitInfo = `You were hit for ${model.boss[chosenBoss].damage}`;
         } else if (bossHitChance > 70) {
             model.player[chosenPlayer].health -= model.boss[chosenBoss].damage * model.boss[chosenBoss].critMultiplier
             console.log('BOSS CRIT');

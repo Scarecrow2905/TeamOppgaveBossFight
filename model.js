@@ -76,6 +76,16 @@ const model = {
             critMultiplier: 2,
             picture: 'Bilder/Terje.JPG',
         },
+        { 
+            name: 'Rick Astley',
+            type: 'No stranger to love',
+            health: 621966,
+            maxhealth: 10000,
+            damage: 1987,
+            accuracy: 1000,
+            critMultiplier: 332,
+            picture: ('Bilder/HiddenBoss.JPG'),
+        },
     ],
 }
 

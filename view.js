@@ -1,7 +1,6 @@
 function viewBosses() {
-    let html = '<div class="title"> Dank Souls</div>';
-    //<div class="title"> Dark Souls</div>
-    for (let index = 0; index < model.boss.length; index++) {
+    let html = `<div class="title" onclick="selectBoss(3)"> Dank Souls</div>`;
+    for (let index = 0; index < 3; index++) {
 
         html += /*html*/`
         <div class="center">
@@ -24,9 +23,6 @@ function viewBosses() {
     }
 // ViewBosses viser oss alle bosser som er tilgjengelig å sloss mot og noen generelle stats om de som navn, health og damage.
 // dette blir vist via en for løkke som tegner opp alle boss "kortene" i viewet med en onclick som lar deg velge hvilken boss du vil sloss mot.
-    
-    html += /*html*/ `
-    `;
     appDiv.innerHTML = html
     
 }
@@ -93,10 +89,6 @@ function viewFight() {
         <button onclick ="playerHeal(${chosenPlayer})" class="Heal" id="heal-btn">💝 Heal</button>
         <button onclick ="reset(${chosenPlayer})" class="reset" id="reset-btn">♻ Reset</button>
         </div>
-        </div>
-        <div class="log-info">
-        <h3>Event Log</h3></br>
-        ${model.bossHitInfo}
         </div>
         `;
         
