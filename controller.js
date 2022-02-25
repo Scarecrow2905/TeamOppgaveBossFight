@@ -15,10 +15,10 @@ function playerAttack() {
         return;
     }
     let playerHitChance = Math.floor(Math.random() * model.player[chosenPlayer].accuracy + 5) //playerHitChance blir regnet ut ifra ett tilfeldig rull av spilleren sin accuracy stat + 5 base accuracy.
-    if (playerHitChance => 50 || playerHitChance <= 70) { //om player ruller høyere enn 50 på hitchance så gjør vi damage på bossen.
+    if (playerHitChance => 50 || playerHitChance < 70) { //om player ruller høyere enn 50 på hitchance så gjør vi damage på bossen.
         model.boss[chosenBoss].health -= model.player[chosenPlayer].damage
-        
-    } else if (playerHitChance > 70) { //hvis hit chancen er over 70 så er det en critical hit og vi ganger damagen ut ifra crit multiplieren
+    }
+    if (playerHitChance > 70) { //hvis hit chancen er over 70 så er det en critical hit og vi ganger damagen ut ifra crit multiplieren
         model.boss[chosenBoss].health -= model.player[chosenPlayer].damage * model.player[chosenPlayer].critMultiplier
         console.log('CRIT HIT');
     }
@@ -28,6 +28,9 @@ function playerAttack() {
 
 function playerHeal() {
     if (model.gameOver == true) {
+        return;
+    }
+    if (model.player[chosenPlayer].mana == 0) {
         return;
     }
     if (model.player[chosenPlayer].mana > 0) { //hvis player sin mana er over 0 så kjører funksjonen
@@ -44,9 +47,9 @@ function bossAttack() {
         let bossHitChance = Math.floor(Math.random() * model.boss[chosenBoss].accuracy + 5)
         if (bossHitChance => 50 || bossHitChance < 70) {
             model.player[chosenPlayer].health -= model.boss[chosenBoss].damage
-            //model.bossHitInfo = `You were hit for ${model.boss[chosenBoss].damage}`;
-        } else if (bossHitChance > 70) {
-            model.player[chosenPlayer].health -= model.boss[chosenBoss].damage * model.boss[chosenBoss].critMultiplier
+        }
+        if (bossHitChance > 70) {
+            model.player[chosenPlayer].health -= model.boss[chosenBoss].damage * model.boss[chosenBoss].critMultiplier;
             console.log('BOSS CRIT');
         }
         
@@ -56,6 +59,10 @@ function bossAttack() {
 }
 
 function checkWinner() {
+    if (model.boss[chosenBoss].name == 'Rick Astley') {
+        window.location.assign('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
+    }
     if (model.player[chosenPlayer].health <= 0) {
         model.player[chosenPlayer].health = 0
         model.gameOver = true;

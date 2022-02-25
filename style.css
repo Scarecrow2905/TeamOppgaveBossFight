@@ -27,7 +27,7 @@
 }
 /*Boss Related CSS*/
 .boss-info {
-	border: 4mm ridge rgba(175, 4, 4, 0.6);
+	
 	background-color: grey;
 	width: 400px;
 	height: 250px;
@@ -42,14 +42,17 @@
 }
 /*Player Related CSS*/
 .player-info {
-	border: 4mm ridge rgba(175, 4, 4, 0.6);
+	
 	background-color: grey;
 	width: 400px;
 	height: 250px;
 	display: grid;
 
 }
-
+.h2 {
+	margin:0px;
+	border-style: solid 5px;
+}
 
 .player-name {
 	height: 25px;

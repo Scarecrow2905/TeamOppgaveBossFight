@@ -51,7 +51,7 @@ const model = {
             health: 1000,
             maxhealth: 1000,
             damage: 150,
-            accuracy: 2000,
+            accuracy: 50,
             critMultiplier: 2,
             picture: 'Bilder/ThereseBoss.JPG',
             
@@ -80,7 +80,7 @@ const model = {
             name: 'Rick Astley',
             type: 'No stranger to love',
             health: 621966,
-            maxhealth: 10000,
+            maxhealth: 621966,
             damage: 1987,
             accuracy: 1000,
             critMultiplier: 332,
